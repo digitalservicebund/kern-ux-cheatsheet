@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>CHEATSHEET</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#kern-ux-cheatsheet" id="toc-kern-ux-cheatsheet">KERN UX
+Cheatsheet</a>
+<ul>
+<li><a href="#breakpoints" id="toc-breakpoints">Breakpoints</a></li>
+<li><a href="#grid" id="toc-grid">Grid</a>
+<ul>
+<li><a href="#container" id="toc-container">Container</a></li>
+<li><a href="#breite-kern-col" id="toc-breite-kern-col">Breite
+(kern-col)</a></li>
+<li><a href="#offset-kern-col" id="toc-offset-kern-col">Offset
+(kern-col)</a></li>
+<li><a href="#vertikale-ausrichtung-kern-row"
+id="toc-vertikale-ausrichtung-kern-row">Vertikale Ausrichtung
+(kern-row)</a></li>
+<li><a href="#horizontale-ausrichtung-kern-row"
+id="toc-horizontale-ausrichtung-kern-row">Horizontale Ausrichtung
+(kern-row)</a></li>
+<li><a href="#ausrichtung-überschreiben-kern-col"
+id="toc-ausrichtung-überschreiben-kern-col">Ausrichtung überschreiben
+(kern-col)</a></li>
+</ul></li>
+<li><a href="#typografisches" id="toc-typografisches">Typografisches</a>
+<ul>
+<li><a href="#headings" id="toc-headings">Headings</a></li>
+<li><a href="#titles" id="toc-titles">Titles</a></li>
+<li><a href="#prelines" id="toc-prelines">Prelines</a></li>
+<li><a href="#sublines" id="toc-sublines">Sublines</a></li>
+<li><a href="#labels" id="toc-labels">Labels</a></li>
+<li><a href="#body-text" id="toc-body-text">Body text</a></li>
+</ul></li>
+<li><a href="#icons" id="toc-icons">Icons</a>
+<ul>
+<li><a href="#größe" id="toc-größe">Größe</a></li>
+<li><a href="#motiv" id="toc-motiv">Motiv</a></li>
+</ul></li>
+<li><a href="#checkbox-radio" id="toc-checkbox-radio">Checkbox &amp;
+Radio</a></li>
+<li><a href="#form-inputs" id="toc-form-inputs">Form Inputs</a>
+<ul>
+<li><a href="#fehler" id="toc-fehler">Fehler</a></li>
+<li><a href="#text-tel-number-password-file-e-mail-url-textarea"
+id="toc-text-tel-number-password-file-e-mail-url-textarea">Text, Tel,
+Number, Password, File, E-Mail, Url, Textarea</a></li>
+<li><a href="#select" id="toc-select">Select</a></li>
+<li><a href="#date" id="toc-date">Date</a></li>
+</ul></li>
+<li><a href="#button" id="toc-button">Button</a>
+<ul>
+<li><a href="#varianten" id="toc-varianten">Varianten</a></li>
+<li><a href="#breite-block" id="toc-breite-block">100% Breite /
+Block</a></li>
+</ul></li>
+<li><a href="#link" id="toc-link">Link</a>
+<ul>
+<li><a href="#small" id="toc-small">small</a></li>
+</ul></li>
+<li><a href="#fieldset" id="toc-fieldset">Fieldset</a>
+<ul>
+<li><a href="#body" id="toc-body">Body</a></li>
+<li><a href="#fehler-3" id="toc-fehler-3">Fehler</a></li>
+</ul></li>
+<li><a href="#table" id="toc-table">Table</a>
+<ul>
+<li><a href="#gestreift" id="toc-gestreift">gestreift</a></li>
+<li><a href="#numerische-felder" id="toc-numerische-felder">numerische
+Felder</a></li>
+<li><a href="#überschrift" id="toc-überschrift">Überschrift</a></li>
+</ul></li>
+<li><a href="#divider" id="toc-divider">Divider</a>
+<ul>
+<li><a href="#nur-visuell" id="toc-nur-visuell">nur visuell</a></li>
+<li><a href="#mit-inhaltlicher-bedeutung-vom-screenreader-vorgelesen"
+id="toc-mit-inhaltlicher-bedeutung-vom-screenreader-vorgelesen">mit
+inhaltlicher Bedeutung (vom Screenreader vorgelesen)</a></li>
+</ul></li>
+<li><a href="#description-list-dl"
+id="toc-description-list-dl">Description List (dl)</a></li>
+<li><a href="#accordion" id="toc-accordion">Accordion</a>
+<ul>
+<li><a href="#mehrere-einträge" id="toc-mehrere-einträge">mehrere
+Einträge</a></li>
+</ul></li>
+<li><a href="#progress" id="toc-progress">Progress</a></li>
+<li><a href="#dialog" id="toc-dialog">Dialog</a></li>
+<li><a href="#loader" id="toc-loader">Loader</a></li>
+<li><a href="#alert" id="toc-alert">Alert</a>
+<ul>
+<li><a href="#varianten-1" id="toc-varianten-1">Varianten</a></li>
+</ul></li>
+<li><a href="#badge" id="toc-badge">Badge</a>
+<ul>
+<li><a href="#varianten-2" id="toc-varianten-2">Varianten</a></li>
+</ul></li>
+<li><a href="#kopfzeile" id="toc-kopfzeile">Kopfzeile</a></li>
+<li><a href="#card" id="toc-card">Card</a></li>
+<li><a href="#summary" id="toc-summary">Summary</a></li>
+<li><a href="#task-list" id="toc-task-list">Task List</a></li>
+<li><a href="#tabs" id="toc-tabs">Tabs</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="kern-ux-cheatsheet">KERN UX Cheatsheet</h1>
+<p>Für Menschen, die schon HMTL <em>können</em> und nur schnell wissen
+wollen, welche Klasse wohin gehört.</p>
+<p>Zur Verwendung mit dem Stylesheet aus dem <a
+href="https://gitlab.opencode.de/kern-ux/kern-ux-plain">KERN -
+Plain-CSS-HTML-Kit</a>.</p>
+<h2 id="breakpoints">Breakpoints</h2>
+<ul>
+<li><code>xs</code>: bis 576px</li>
+<li><code>sm</code>: ab 576px</li>
+<li><code>md</code>: ab 768px</li>
+<li><code>lg</code>: ab 992px</li>
+<li><code>xl</code>: ab 1200px</li>
+<li><code>xxl</code>: ab 1600px</li>
+</ul>
+<hr />
+<h2 id="grid">Grid</h2>
+<p><a
+href="https://gitlab.opencode.de/kern-ux/kern-ux-plain/-/blob/main/src/scss/core/layout/_grid.scss?ref_type=heads">Code</a>
+<a href="https://www.kern-ux.de/komponenten/grid">Doku</a></p>
+<ul>
+<li>12-Spalten-Grid</li>
+<li><code>kern-container</code>, <code>kern-row</code>,
+<code>kern-col</code></li>
+</ul>
+<h3 id="container">Container</h3>
+<ul>
+<li><code>kern-container</code> wird maximal 1600px breit</li>
+<li><code>kern-container-fluid</code> hat keine Begrenzung der
+Breite</li>
+</ul>
+<h3 id="breite-kern-col">Breite (kern-col)</h3>
+<ul>
+<li><code>kern-col-</code> + Breakpoint + <code>1</code> -
+<code>12</code>, z.B. <code>kern-col-sm-8</code></li>
+</ul>
+<h3 id="offset-kern-col">Offset (kern-col)</h3>
+<ul>
+<li><code>kern-col-</code> + Breakpoint + <code>offset-</code> +
+<code>1</code> - <code>12</code>, z.B.
+<code>kern-col-sm-offset-2</code></li>
+</ul>
+<h3 id="vertikale-ausrichtung-kern-row">Vertikale Ausrichtung
+(kern-row)</h3>
+<ul>
+<li>oben: <code>kern-align-items-start</code></li>
+<li>mittig: <code>kern-align-items-center</code></li>
+<li>unten: <code>kern-align-items-end</code></li>
+</ul>
+<h3 id="horizontale-ausrichtung-kern-row">Horizontale Ausrichtung
+(kern-row)</h3>
+<ul>
+<li>links: <code>kern-justify-content-start</code></li>
+<li>mittig: <code>kern-justify-content-center</code></li>
+<li>rechts: <code>kern-justify-content-end</code></li>
+</ul>
+<h4 id="gleichmäßge-verteilung">gleichmäßge Verteilung</h4>
+<ul>
+<li>gleicher Abstand um jede Spalte:
+<code>kern-justify-content-around</code></li>
+<li>maximaler Abstand zwischen den Spalten:
+<code>kern-justify-content-between</code></li>
+<li>gleicher Abstand zwischen <em>und</em> um jede Spalte:
+<code>kern-justify-content-evenly</code></li>
+</ul>
+<h3 id="ausrichtung-überschreiben-kern-col">Ausrichtung überschreiben
+(kern-col)</h3>
+<h4 id="vertikale-ausrichtung">Vertikale Ausrichtung</h4>
+<ul>
+<li>oben: <code>kern-align-self-start</code></li>
+<li>mittig: <code>kern-align-self-center</code></li>
+<li>unten: <code>kern-align-self-end</code></li>
+</ul>
+<hr />
+<h2 id="typografisches">Typografisches</h2>
+<h3 id="headings">Headings</h3>
+<p>Mit <code>h1</code>-<code>h6</code> kombinieren.</p>
+<ul>
+<li><code>kern-heading-display</code></li>
+<li><code>kern-heading-x-large</code></li>
+<li><code>kern-heading-large</code></li>
+<li><code>kern-heading-medium</code></li>
+<li><code>kern-heading-small</code></li>
+</ul>
+<h3 id="titles">Titles</h3>
+<p>Mit <code>h1</code>-<code>h6</code> oder anderem Element, z.B.
+<code>p</code> kombinieren.</p>
+<ul>
+<li><code>kern-title kern-title--large</code></li>
+<li><code>kern-title</code></li>
+<li><code>kern-title kern-title--small</code></li>
+</ul>
+<h3 id="prelines">Prelines</h3>
+<ul>
+<li><code>kern-preline kern-preline--large</code></li>
+<li><code>kern-preline</code></li>
+<li><code>kern-preline kern-preline--small</code></li>
+</ul>
+<h3 id="sublines">Sublines</h3>
+<ul>
+<li><code>kern-subline kern-subline--large</code></li>
+<li><code>kern-subline</code></li>
+<li><code>kern-subline kern-subline--small</code></li>
+</ul>
+<h3 id="labels">Labels</h3>
+<p>i.d.R. mit <code>label</code> oder <code>legend</code>
+kombinieren.</p>
+<ul>
+<li><code>kern-label kern-label--large</code></li>
+<li><code>kern-label</code></li>
+<li><code>kern-label kern-label--small</code></li>
+</ul>
+<h3 id="body-text">Body text</h3>
+<p>note: font-size und font-weight können kombiniert werden, z.B.
+<code>kern-body kern-body--large kern-body--bold</code>.</p>
+<h4 id="font-size">font-size</h4>
+<ul>
+<li><code>kern-body kern-body--large</code></li>
+<li><code>kern-body</code></li>
+<li><code>kern-body kern-body--small</code></li>
+</ul>
+<h4 id="font-weight">font-weight</h4>
+<ul>
+<li><code>kern-body kern-body--bold</code></li>
+<li><code>kern-body kern-body--muted</code></li>
+</ul>
+<hr />
+<h2 id="icons">Icons</h2>
+<ul>
+<li>span element</li>
+<li>Basisklasse <code>kern-icon</code></li>
+<li><code>aria-hidden="true"</code> hinzufügen</li>
+<li>Beispiel:
+<code>&lt;span class="kern-icon kern-icon--arrow-forward kern-icon--small" aria-hidden="true"&gt;&lt;/span&gt;</code></li>
+</ul>
+<h3 id="größe">Größe</h3>
+<ul>
+<li><code>kern-icon kern-icon--x-large</code></li>
+<li><code>kern-icon kern-icon--large</code></li>
+<li><code>kern-icon</code></li>
+<li><code>kern-icon kern-icon--small</code></li>
+</ul>
+<h3 id="motiv">Motiv</h3>
+<h4 id="im-kern-stylesheet-enthalten">im KERN Stylesheet enthalten</h4>
+<ul>
+<li><code>kern-icon--home</code></li>
+<li><code>kern-icon--arrow-up</code></li>
+<li><code>kern-icon--arrow-down</code></li>
+<li><code>kern-icon--arrow-forward</code></li>
+<li><code>kern-icon--arrow-back</code></li>
+<li><code>kern-icon--info</code></li>
+<li><code>kern-icon--success</code></li>
+<li><code>kern-icon--warning</code></li>
+<li><code>kern-icon--danger</code></li>
+<li><code>kern-icon--open-in-new</code></li>
+<li><code>kern-icon--download</code></li>
+<li><code>kern-icon--logout</code></li>
+<li><code>kern-icon--checklist</code></li>
+<li><code>kern-icon--mail</code></li>
+<li><code>kern-icon--edit</code></li>
+<li><code>kern-icon--sign-language</code></li>
+<li><code>kern-icon--easy-language</code></li>
+<li><code>kern-icon--autorenew</code></li>
+<li><code>kern-icon--add</code></li>
+<li><code>kern-icon--close</code></li>
+<li><code>kern-icon--delete</code></li>
+<li><code>kern-icon--search</code></li>
+<li><code>kern-icon--question-mark</code></li>
+<li><code>kern-icon--more-vert</code></li>
+<li><code>kern-icon--content-copy</code></li>
+<li><code>kern-icon--visibility</code></li>
+<li><code>kern-icon--visibility-off</code></li>
+<li><code>kern-icon--check</code></li>
+<li><code>kern-icon--drive-folder-upload</code></li>
+<li><code>kern-icon--chevron-left</code></li>
+<li><code>kern-icon--chevron-right</code></li>
+<li><code>kern-icon--keyboard-double-arrow-left</code></li>
+<li><code>kern-icon--keyboard-double-arrow-right</code></li>
+</ul>
+<p><a
+href="https://gitlab.opencode.de/joschka/material-ui-icons-for-kern-ux/-/raw/main/list.css?ref_type=heads">weitere
+Material UI Icons</a></p>
+<hr />
+<h2 id="checkbox-radio">Checkbox &amp; Radio</h2>
+<ul>
+<li>wrapper div: <code>kern-form-check</code></li>
+<li>checkbox: <code>kern-form-check__checkbox</code></li>
+<li>radio: <code>kern-form-check__radio</code></li>
+</ul>
+<hr />
+<h2 id="form-inputs">Form Inputs</h2>
+<p>wrapper div: <code>kern-form-input</code></p>
+<h3 id="fehler">Fehler</h3>
+<p><code>kern-form-input kern-form-input--error</code></p>
+<h3 id="text-tel-number-password-file-e-mail-url-textarea">Text, Tel,
+Number, Password, File, E-Mail, Url, Textarea</h3>
+<p>input: <code>kern-form-input__input</code></p>
+<h4 id="fehler-1">Fehler</h4>
+<p><code>kern-form-input__input kern-form-input__input--error</code></p>
+<h3 id="select">Select</h3>
+<ul>
+<li>weiterer wrapper um das select-Element
+<code>kern-form-input__select-wrapper</code></li>
+<li>select: <code>kern-form-input__select</code></li>
+</ul>
+<h4 id="fehler-2">Fehler</h4>
+<p><code>kern-form-input__select kern-form-input__select--error</code></p>
+<h3 id="date">Date</h3>
+<ul>
+<li>mehrere kurze Textfelder in einem Fieldset</li>
+<li>2 Zeichen:
+<code>kern-form-input__input kern-form-input__input--width-2</code></li>
+<li>4 Zeichen:
+<code>kern-form-input__input kern-form-input__input--width-4</code></li>
+</ul>
+<hr />
+<h2 id="button">Button</h2>
+<p>Mit <code>button</code> oder <code>a</code> oder z.B. react-router’s
+<code>Link</code> kombinieren.</p>
+<ul>
+<li>den Text mit einem
+<code>&lt;span class="kern-label"&gt;&lt;/span&gt;</code>
+umschließen</li>
+<li>Icons davor oder danach einfügen</li>
+</ul>
+<h3 id="varianten">Varianten</h3>
+<ul>
+<li><code>kern-btn kern-btn--primary</code></li>
+<li><code>kern-btn kern-btn--secondary</code></li>
+<li><code>kern-btn kern-btn--tertiary</code></li>
+</ul>
+<h3 id="breite-block">100% Breite / Block</h3>
+<ul>
+<li><code>kern-btn--block</code></li>
+</ul>
+<hr />
+<h2 id="link">Link</h2>
+<ul>
+<li>Basisklasse: <code>kern-link</code></li>
+<li>Icons vor oder nach dem Text einfügen</li>
+</ul>
+<h3 id="small">small</h3>
+<ul>
+<li><code>kern-link kern-link--small</code></li>
+</ul>
+<hr />
+<h2 id="fieldset">Fieldset</h2>
+<ul>
+<li><code>kern-fieldset</code> auf das
+<code>fieldset</code>-Element</li>
+<li>für das <code>legend</code>-Element siehe Labels</li>
+<li>der Inhalt unterhalb der <code>legend</code> wird in ein div mit der
+Klasse <code>kern-fieldset__body</code> gesetzt</li>
+</ul>
+<h3 id="body">Body</h3>
+<ul>
+<li><code>kern-fieldset__body</code>: Inhalte untereinander</li>
+<li><code>kern-fieldset__body kern-fieldset__body--horizontal</code>:
+Inhalte nebeneinander</li>
+</ul>
+<h3 id="fehler-3">Fehler</h3>
+<ul>
+<li><code>kern-fieldset kern-fieldset--error</code></li>
+</ul>
+<hr />
+<h2 id="table">Table</h2>
+<ul>
+<li>normale HTML-Tabellenstruktur, Elemente bekommen Klassen:</li>
+<li><code>table</code>: <code>kern-table</code></li>
+<li><code>thead</code>: <code>kern-table__head</code></li>
+<li><code>tbody</code>: <code>kern-table__body</code></li>
+<li><code>tfoot</code>: <code>kern-table__footer</code></li>
+<li><code>tr</code>: <code>kern-table__row</code></li>
+<li><code>th</code>: <code>kern-table__header</code></li>
+<li><code>td</code>: <code>kern-table__cell</code></li>
+</ul>
+<h3 id="gestreift">gestreift</h3>
+<p><code>kern-table kern-table--striped</code></p>
+<h3 id="numerische-felder">numerische Felder</h3>
+<ul>
+<li>th: <code>kern_table__header kern_table__header--numeric</code></li>
+<li>td: <code>kern_table__cell kern_table__cell--numeric</code></li>
+</ul>
+<h3 id="überschrift">Überschrift</h3>
+<p><code>&lt;caption class="kern-title"&gt;Überschrift&lt;/caption&gt;</code></p>
+<hr />
+<h2 id="divider">Divider</h2>
+<h3 id="nur-visuell">nur visuell</h3>
+<p><code>&lt;hr class="kern-divider" aria-hidden="true" /&gt;</code></p>
+<h3 id="mit-inhaltlicher-bedeutung-vom-screenreader-vorgelesen">mit
+inhaltlicher Bedeutung (vom Screenreader vorgelesen)</h3>
+<p><code>&lt;hr class="kern-divider" /&gt;</code></p>
+<hr />
+<h2 id="description-list-dl">Description List (dl)</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">dl</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-description-list&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-description-list-item&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">dt</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-description-list-item__key&quot;</span><span class="dt">&gt;</span>KEY<span class="dt">&lt;/</span><span class="kw">dt</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">dd</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-description-list-item__value&quot;</span><span class="dt">&gt;</span>VALUE<span class="dt">&lt;/</span><span class="kw">dd</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">dl</span><span class="dt">&gt;</span></span></code></pre></div>
+<p>Column-Variante:
+<code>kern-description-list kern-description-list--col</code></p>
+<hr />
+<h2 id="accordion">Accordion</h2>
+<ul>
+<li><code>details</code>: <code>kern-accordion</code></li>
+<li><code>summary</code>: <code>kern-accordion__header</code></li>
+<li>innerhalb des <code>details</code> unterhalb des
+<code>summary</code>-Elements ein Element mit der Klasse
+<code>kern-accordion__body</code></li>
+<li>in die <code>summary</code> kommt ein
+<code>&lt;span class="kern-title"&gt;...&lt;/span&gt;</code></li>
+</ul>
+<h3 id="mehrere-einträge">mehrere Einträge</h3>
+<ul>
+<li>die <code>details</code>-Elemente mit einem
+<code>&lt;div class="kern-accordion-group"&gt;...&lt;/div&gt;</code>
+umschließen</li>
+</ul>
+<hr />
+<h2 id="progress">Progress</h2>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-progress&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-label&quot;</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;progress1&quot;</span><span class="dt">&gt;</span>Schritt 2 von 5<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">progress</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;progress1&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;2&quot;</span><span class="ot"> max</span><span class="op">=</span><span class="st">&quot;5&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">progress</span><span class="dt">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+<ul>
+<li><code>label</code> kann auch unter dem <code>progress</code> stehen
+oder ganz weggelassen werden</li>
+</ul>
+<hr />
+<h2 id="dialog">Dialog</h2>
+<p>dialog-HTML-Element</p>
+<hr />
+<h2 id="loader">Loader</h2>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-loader kern-loader--visible&quot;</span><span class="ot"> role</span><span class="op">=</span><span class="st">&quot;status&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-sr-only&quot;</span><span class="dt">&gt;</span>Wird geladen...<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+<hr />
+<h2 id="alert">Alert</h2>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-alert kern-alert--info&quot;</span><span class="ot"> role</span><span class="op">=</span><span class="st">&quot;alert&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-alert__header&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-icon kern-icon--info&quot;</span><span class="ot"> aria-hidden</span><span class="op">=</span><span class="st">&quot;true&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-title&quot;</span><span class="dt">&gt;</span>Information<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span>  </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-alert__body&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-body&quot;</span><span class="dt">&gt;</span>Die Beschreibung liefert mehr Kontext und sollte auch Handlungsoptionen aufzeigen, falls nötig.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-link&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-icon kern-icon--arrow-forward&quot;</span><span class="ot"> aria-hidden</span><span class="op">=</span><span class="st">&quot;true&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        Linktext</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+<ul>
+<li><code>kern-alert__body</code> ist optional</li>
+</ul>
+<h3 id="varianten-1">Varianten</h3>
+<ul>
+<li>info</li>
+<li>success</li>
+<li>warning</li>
+<li>danger</li>
+</ul>
+<hr />
+<h2 id="badge">Badge</h2>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-badge kern-badge--info&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-icon kern-icon--info&quot;</span><span class="ot"> aria-hidden</span><span class="op">=</span><span class="st">&quot;true&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-label kern-label--small&quot;</span><span class="dt">&gt;</span>Information<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span></code></pre></div>
+<ul>
+<li>icon ist optional</li>
+</ul>
+<h3 id="varianten-2">Varianten</h3>
+<ul>
+<li>info</li>
+<li>success</li>
+<li>warning</li>
+<li>danger</li>
+</ul>
+<hr />
+<h2 id="kopfzeile">Kopfzeile</h2>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-kopfzeile&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-container&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-kopfzeile__content&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-kopfzeile__flagge&quot;</span><span class="ot"> aria-hidden</span><span class="op">=</span><span class="st">&quot;true&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">svg</span><span class="ot"> xmlns</span><span class="op">=</span><span class="st">&quot;http://www.w3.org/2000/svg&quot;</span><span class="ot"> fill</span><span class="op">=</span><span class="st">&quot;none&quot;</span><span class="ot"> viewBox</span><span class="op">=</span><span class="st">&quot;0 0 24 16&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">path</span><span class="ot"> fill</span><span class="op">=</span><span class="st">&quot;#000&quot;</span><span class="ot"> d</span><span class="op">=</span><span class="st">&quot;M0 .5h24v5.333H0z&quot;</span><span class="ot"> </span><span class="dt">/&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">path</span><span class="ot"> fill</span><span class="op">=</span><span class="st">&quot;red&quot;</span><span class="ot"> d</span><span class="op">=</span><span class="st">&quot;M0 5.833h24v5.333H0z&quot;</span><span class="ot"> </span><span class="dt">/&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">path</span><span class="ot"> fill</span><span class="op">=</span><span class="st">&quot;#FACA2C&quot;</span><span class="ot"> d</span><span class="op">=</span><span class="st">&quot;M0 11.167h24V16.5H0z&quot;</span><span class="ot"> </span><span class="dt">/&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;/</span><span class="kw">svg</span><span class="dt">&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;kern-kopfzeile__label&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      Offizielle Website – Bundesrepublik Deutschland</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+<p>Fluide? Dann <code>kern-container</code> gegen
+<code>kern-container-fluid</code> austauschen</p>
+<hr />
+<h2 id="card">Card</h2>
+<hr />
+<h2 id="summary">Summary</h2>
+<hr />
+<h2 id="task-list">Task List</h2>
+<hr />
+<h2 id="tabs">Tabs</h2>
+</body>
+</html>

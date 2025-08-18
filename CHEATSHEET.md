@@ -6,6 +6,12 @@ Zur Verwendung mit dem Stylesheet aus dem [KERN - Plain-CSS-HTML-Kit](https://gi
 
 Sortiert nach Basics first und am Ende die größeren zusammengesetzten Komponenten.
 
+## Read the source
+
+[Stylesheet kern.css](https://cdn.jsdelivr.net/npm/@kern-ux/native/dist/kern.css)
+
+Design Tokens am Ende der Datei
+
 ## Breakpoints
 
 - `xs`: bis 576px

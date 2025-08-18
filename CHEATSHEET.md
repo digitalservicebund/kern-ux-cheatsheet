@@ -4,6 +4,8 @@ Für Menschen, die schon HMTL _können_ und nur schnell wissen wollen, welche Kl
 
 Zur Verwendung mit dem Stylesheet aus dem [KERN - Plain-CSS-HTML-Kit](https://gitlab.opencode.de/kern-ux/kern-ux-plain).
 
+Sortiert nach Basics first und am Ende die größeren zusammengesetzten Komponenten.
+
 ## Breakpoints
 
 - `xs`: bis 576px
@@ -177,7 +179,7 @@ note: font-size und font-weight können kombiniert werden, z.B. `kern-body kern-
 
 ---
 
-## Checkbox & Radio
+## Checkbox & Radio `<input type=checkbox>`, `<input type=radio>`
 
 - wrapper div: `kern-form-check`
 - checkbox: `kern-form-check__checkbox`
@@ -201,7 +203,7 @@ input: `kern-form-input__input`
 
 `kern-form-input__input kern-form-input__input--error`
 
-### Select
+### Select `<select>`
 
 - weiterer wrapper um das select-Element `kern-form-input__select-wrapper`
 - select: `kern-form-input__select`
@@ -220,7 +222,7 @@ input: `kern-form-input__input`
 
 
 
-## Button
+## Button `<button>`, `<a>`
 
 Mit `button` oder `a` oder z.B. react-router's `Link` kombinieren.
 
@@ -239,7 +241,7 @@ Mit `button` oder `a` oder z.B. react-router's `Link` kombinieren.
 
 ---
 
-## Link
+## Link `<a>`
 
 - Basisklasse: `kern-link`
 - Icons vor oder nach dem Text einfügen
@@ -250,7 +252,7 @@ Mit `button` oder `a` oder z.B. react-router's `Link` kombinieren.
 
 ---
 
-## Fieldset
+## Fieldset `<fieldset>` + `<legend>`
 
 - `kern-fieldset` auf das `fieldset`-Element
 - für das `legend`-Element siehe Labels
@@ -267,7 +269,7 @@ Mit `button` oder `a` oder z.B. react-router's `Link` kombinieren.
 
 ---
 
-## Table
+## Table `<table>`
 
 - normale HTML-Tabellenstruktur, Elemente bekommen Klassen:
 - `table`: `kern-table`
@@ -293,7 +295,7 @@ Mit `button` oder `a` oder z.B. react-router's `Link` kombinieren.
 
 ---
 
-## Divider
+## Divider `<hr>`
 
 ### nur visuell
 
@@ -305,7 +307,7 @@ Mit `button` oder `a` oder z.B. react-router's `Link` kombinieren.
 
 ---
 
-## Description List (dl)
+## Description List `<dl>`
 
 ```html
 <dl class="kern-description-list">
@@ -320,7 +322,7 @@ Column-Variante: `kern-description-list kern-description-list--col`
 
 ---
 
-## Accordion
+## Accordion `<details>` + `<summary>`
 
 - `details`: `kern-accordion`
 - `summary`: `kern-accordion__header`
@@ -334,7 +336,7 @@ Column-Variante: `kern-description-list kern-description-list--col`
 
 ---
 
-## Progress
+## Progress `<progress>`
 
 ```html
 <div class="kern-progress">
@@ -348,9 +350,29 @@ Column-Variante: `kern-description-list kern-description-list--col`
 
 ---
 
-## Dialog
+## Dialog `<dialog>`
 
 dialog-HTML-Element
+
+```html
+<dialog id="modal1" class="kern-dialog" aria-labelledby="modal1_heading" open>
+    <header class="kern-dialog__header">
+      <h2 class="kern-title kern-title--large" id="modal1_heading">Frage?</h2>
+      <button class="kern-btn kern-btn--tertiary">
+        <span class="kern-icon kern-icon--close" aria-hidden="true"></span>
+        <span class="kern-sr-only">Schließen</span>
+      </button>
+    </header>
+
+    <section class="kern-dialog__body">
+        ... z.B. Fließtext ...
+    </section>
+
+    <footer class="kern-dialog__footer">
+        ... z.B. Buttons ...
+    </footer>
+</dialog>
+```
 
 
 ---
@@ -442,14 +464,106 @@ Fluide? Dann `kern-container` gegen `kern-container-fluid` austauschen
 
 ## Card
 
+[Code](https://gitlab.opencode.de/kern-ux/kern-ux-plain/-/blob/main/src/scss/core/components/_card.scss?ref_type=heads)
+[Doku](https://www.kern-ux.de/komponenten/card)
+
+Layout-Komponente in verschiedenen visuellen Varianten und Größen
+
+Beispiel:
+
+```html
+<article class="kern-card">
+  <div class="kern-card__media">
+    <img src="/img/kern-img-media.png" alt="ALT Text">
+  </div>
+
+  <div class="kern-card__container">
+    <header class="kern-card__header">
+      <p class="kern-preline">Vorzeile</p>
+      <h2 class="kern-title">Default</h2>
+      <h3 class="kern-subline">Unterzeile</h3>
+    </header>
+
+    <section class="kern-card__body">
+      <p class="kern-body">Hier werden soviele Informationen zur Verfügung gestellt, wie benötigt und nicht mehr. Ein Maximum von 150 characters empfohlen.</p>
+    </section>
+
+    <footer class="kern-card__footer">
+      <button class="kern-btn kern-btn--primary">
+        <span class="kern-label">Primäraktion</span>
+      </button>
+      <button class="kern-btn kern-btn--secondary">
+        <span class="kern-label">Aktion</span>
+      </button>
+    </footer>
+  </div>
+</article>
+```
+
 ---
 
 ## Summary
+
+[Doku](https://www.kern-ux.de/komponenten/summary)
+
+Zusammenfassung von Formulareingaben: Nummerierter Titel + Description List + Bearbeiten-Button
+
+```html
+<div class="kern-summary">
+  <div class="kern-summary__header">
+    <span class="kern-number">1</span>
+    <h3 class="kern-title kern-title--small" id="title">
+	  Angaben zur Person
+    </h3>
+  </div>
+
+  <div class="kern-summary__body">
+    <dl class="kern-description-list">
+      ... Description List ...
+    </dl>
+
+    <div class="kern-summary__actions">
+      <a href="#" class="kern-link" aria-describedby="title">
+        <span class="kern-icon kern-icon--edit" aria-hidden="true"></span>
+        Bearbeiten
+      </a>
+    </div>
+  </div>
+</div>
+```
 
 ---
 
 ## Task List
 
+[Doku](https://www.kern-ux.de/komponenten/tasklist)
+
+Aufgabenliste mit Status: Nummer + Titel + Badge
+
+```html
+<div class="kern-task-list">
+<div class="kern-task-list__header">
+  <h2 class="kern-heading-medium">Persönliche Daten</h2>
+</div>
+
+<ul class="kern-task-list__list">
+<li class="kern-task-list__item">
+	<span class="kern-number">1</span>
+	<div class="kern-task-list__title" id="task1-title">
+		<a href="#" class="kern-link kern-link--stretched" aria-describedby="task1-status">
+			Angaben zur Person machen
+		</a>
+		<div class="kern-task-list__status" id="task1-status">
+            BADGE
+		</div>
+	</div>
+</li>
+</ul>
+</div>
+```
+
 ---
 
 ## Tabs
+
+noch nicht veröffentlicht

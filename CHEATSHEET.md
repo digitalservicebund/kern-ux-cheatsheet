@@ -1,6 +1,11 @@
+ <link rel="stylesheet" href="https://unpkg.com/@kern-ux/native/dist/kern.min.css" />
+<style>
+  body { max-width: none; }
+</style>
+
 # KERN UX Cheatsheet
 
-Für Menschen, die schon HMTL _können_ und nur schnell wissen wollen, welche Klasse wohin gehört.
+Zielgruppe: Menschen, die schon HMTL _können_ und nur schnell wissen wollen, welche Klasse wohin gehört.
 
 Zur Verwendung mit dem Stylesheet aus dem [KERN - Plain-CSS-HTML-Kit](https://gitlab.opencode.de/kern-ux/kern-ux-plain).
 
@@ -12,6 +17,8 @@ Sortiert nach Basics first und am Ende die größeren zusammengesetzten Komponen
 
 Design Tokens am Ende der Datei
 
+
+
 ## Breakpoints
 
 - `xs`: bis 576px
@@ -20,6 +27,15 @@ Design Tokens am Ende der Datei
 - `lg`: ab 992px
 - `xl`: ab 1200px
 - `xxl`: ab 1600px
+
+---
+
+## Utils
+
+### Screenreader only
+
+- `kern-sr-only`
+- `kern-sr-only-mobile` (nur bis 767px)
 
 ---
 
@@ -193,7 +209,7 @@ note: font-size und font-weight können kombiniert werden, z.B. `kern-body kern-
 
 ---
 
-## Form Inputs
+## Form Inputs `<Input>`, `<textarea>`
 
 wrapper div: `kern-form-input`
 
@@ -223,6 +239,18 @@ input: `kern-form-input__input`
 - mehrere kurze Textfelder in einem Fieldset
 - 2 Zeichen: `kern-form-input__input kern-form-input__input--width-2`
 - 4 Zeichen: `kern-form-input__input kern-form-input__input--width-4`
+
+---
+
+## Error message
+
+- `kern-error`
+
+---
+
+## Number
+
+- `kern-number`
 
 ---
 
@@ -286,9 +314,11 @@ Mit `button` oder `a` oder z.B. react-router's `Link` kombinieren.
 - `th`: `kern-table__header`
 - `td`: `kern-table__cell`
 
-### gestreift
+### Varianten
 
-`kern-table kern-table--striped`
+- gestreift: `kern-table kern-table--striped`
+- klein: `kern-table kern-table--small`
+
 
 ### numerische Felder
 
@@ -573,3 +603,1599 @@ Aufgabenliste mit Status: Nummer + Titel + Badge
 ## Tabs
 
 noch nicht veröffentlicht
+
+
+
+
+---
+
+
+## Tokens
+
+Beispiel:
+
+- als CSS Variable: `border-radius: var(--kern-metric-border-radius-default);`
+- mit Tailwind: `<div class="rounded-kern-default">`
+
+<style>
+    .kern-tokens td { vertical-align: top; font-family: monospace; }
+    .kern-tokens tr:has([rowspan]):not(:first-child) { border-top: 1rem solid transparent; }
+    .kern-tokens-color { width: 1.5rem; height: 1.5rem; }
+    .kern-tokens strong { font-family: inherit; }
+</style>
+
+<table class="kern-tokens">
+    <thead>
+        <tr>
+          <th>CSS</th>
+          <th>Tailwind</th>
+          <th>Modifier</th>
+          <th>Wert</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2">--kern-typography-<strong>font-family</strong>-fira-</td>
+            <td rowspan="3">font-kern-</td>
+            <td>sans</td>
+            <td>Fira Sans</td>
+        </tr>
+        <tr>
+            <td>mono</td>
+            <td>Fira Mono</td>
+        </tr>
+        <tr>
+            <td>--kern-typography-<strong>font-family</strong>-</td>
+            <td>default</td>
+            <td>Fira Sans</td>
+        </tr>
+        <tr>
+            <td rowspan="13">--kern-<strong>font-size</strong>-</td>
+            <td rowspan="13">text-kern-</td>
+            <td>12</td>
+            <td>12px</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>16px</td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>18px</td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>20px</td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>21px</td>
+        </tr>
+        <tr>
+            <td>24</td>
+            <td>24px</td>
+        </tr>
+        <tr>
+            <td>26</td>
+            <td>26px</td>
+        </tr>
+        <tr>
+            <td>32</td>
+            <td>32px</td>
+        </tr>
+        <tr>
+            <td>40</td>
+            <td>40px</td>
+        </tr>
+        <tr>
+            <td>48</td>
+            <td>48px</td>
+        </tr>
+        <tr>
+            <td>56</td>
+            <td>56px</td>
+        </tr>
+        <tr>
+            <td>72</td>
+            <td>72px</td>
+        </tr>
+        <tr>
+            <td>80</td>
+            <td>80px</td>
+        </tr>
+        <tr>
+            <td rowspan="3">--kern-typography-font-size-<strong>static</strong>- & --kern-typography-line-height-static-</td>
+            <td rowspan="3">text-kern-static-</td>
+            <td>small</td>
+            <td>16px</td>
+        </tr>
+        <tr>
+            <td>medium</td>
+            <td>18px/24px</td>
+        </tr>
+        <tr>
+            <td>large</td>
+            <td>21px/32px</td>
+        </tr>
+        <tr>
+            <td rowspan="4">--kern-typography-font-size-<strong>adaptive</strong>- & --kern-typography-line-height-adaptive-</td>
+            <td rowspan="4">text-kern-adaptive-</td>
+            <td>medium</td>
+            <td>21px/24px (24px/32px)</td>
+        </tr>
+        <tr>
+            <td>large</td>
+            <td>26px/32px (32px/40px)</td>
+        </tr>
+        <tr>
+            <td>x-large</td>
+            <td>32px/40px (48px/56px)</td>
+        </tr>
+        <tr>
+            <td>2x-large</td>
+            <td>48px/56px (72px/80px)</td>
+        </tr>
+        <tr>
+            <td rowspan="46">--kern-</td>
+            <td rowspan="46">-kern-</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1px</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2px</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3px</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>4px</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>5px</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>6px</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>7px</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>8px</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>9px</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>10px</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>12px</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>14px</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>16px</td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>18px</td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>20px</td>
+        </tr>
+        <tr>
+            <td>24</td>
+            <td>24px</td>
+        </tr>
+        <tr>
+            <td>32</td>
+            <td>32px</td>
+        </tr>
+        <tr>
+            <td>40</td>
+            <td>40px</td>
+        </tr>
+        <tr>
+            <td>48</td>
+            <td>48px</td>
+        </tr>
+        <tr>
+            <td>56</td>
+            <td>56px</td>
+        </tr>
+        <tr>
+            <td>64</td>
+            <td>64px</td>
+        </tr>
+        <tr>
+            <td>80</td>
+            <td>80px</td>
+        </tr>
+        <tr>
+            <td>96</td>
+            <td>96px</td>
+        </tr>
+        <tr>
+            <td>128</td>
+            <td>128px</td>
+        </tr>
+        <tr>
+            <td>160</td>
+            <td>160px</td>
+        </tr>
+        <tr>
+            <td>192</td>
+            <td>192px</td>
+        </tr>
+        <tr>
+            <td>224</td>
+            <td>224px</td>
+        </tr>
+        <tr>
+            <td>240</td>
+            <td>240px</td>
+        </tr>
+        <tr>
+            <td>256</td>
+            <td>256px</td>
+        </tr>
+        <tr>
+            <td>352</td>
+            <td>352px</td>
+        </tr>
+        <tr>
+            <td>360</td>
+            <td>360px</td>
+        </tr>
+        <tr>
+            <td>384</td>
+            <td>384px</td>
+        </tr>
+        <tr>
+            <td>480</td>
+            <td>480px</td>
+        </tr>
+        <tr>
+            <td>512</td>
+            <td>512px</td>
+        </tr>
+        <tr>
+            <td>736</td>
+            <td>736px</td>
+        </tr>
+        <tr>
+            <td>768</td>
+            <td>768px</td>
+        </tr>
+        <tr>
+            <td>992</td>
+            <td>992px</td>
+        </tr>
+        <tr>
+            <td>1024</td>
+            <td>1024px</td>
+        </tr>
+        <tr>
+            <td>1140</td>
+            <td>1140px</td>
+        </tr>
+        <tr>
+            <td>1248</td>
+            <td>1248px</td>
+        </tr>
+        <tr>
+            <td>1280</td>
+            <td>1280px</td>
+        </tr>
+        <tr>
+            <td>1504</td>
+            <td>1504px</td>
+        </tr>
+        <tr>
+            <td>1536</td>
+            <td>1536px</td>
+        </tr>
+        <tr>
+            <td>1600</td>
+            <td>1600px</td>
+        </tr>
+        <tr>
+            <td>1920</td>
+            <td>1920px</td>
+        </tr>
+        <tr>
+            <td rowspan="7">--kern-metric-<strong>space</strong>-</td>
+            <td rowspan="7">-kern-space-</td>
+            <td>none</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>2x-small</td>
+            <td>2px</td>
+        </tr>
+        <tr>
+            <td>x-small</td>
+            <td>4px</td>
+        </tr>
+        <tr>
+            <td>small</td>
+            <td>8px</td>
+        </tr>
+        <tr>
+            <td>default</td>
+            <td>16px</td>
+        </tr>
+        <tr>
+            <td>large</td>
+            <td>24px</td>
+        </tr>
+        <tr>
+            <td>x-large</td>
+            <td>32px</td>
+        </tr>
+        <tr>
+            <td rowspan="10">--kern-metric-<strong>dimension</strong>-</td>
+            <td rowspan="10">-kern-dimension-</td>
+            <td>2x-small</td>
+            <td>8px</td>
+        </tr>
+        <tr>
+            <td>x-small</td>
+            <td>16px</td>
+        </tr>
+        <tr>
+            <td>small</td>
+            <td>20px</td>
+        </tr>
+        <tr>
+            <td>default</td>
+            <td>24px</td>
+        </tr>
+        <tr>
+            <td>large</td>
+            <td>32px</td>
+        </tr>
+        <tr>
+            <td>x-large</td>
+            <td>48px</td>
+        </tr>
+        <tr>
+            <td>2x-large</td>
+            <td>56px</td>
+        </tr>
+        <tr>
+            <td>3x-large</td>
+            <td>64px</td>
+        </tr>
+        <tr>
+            <td>4x-large</td>
+            <td>80px</td>
+        </tr>
+        <tr>
+            <td>5x-large</td>
+            <td>96px</td>
+        </tr>
+        <tr>
+            <td rowspan="3">--kern-metric-dimension-<strong>media</strong>-</td>
+            <td rowspan="3">-kern-dimension-media-</td>
+            <td>small</td>
+            <td>96px (128px)</td>
+        </tr>
+        <tr>
+            <td>default</td>
+            <td>160px (192px)</td>
+        </tr>
+        <tr>
+            <td>large</td>
+            <td>240px (360px)</td>
+        </tr>
+        <tr>
+            <td rowspan="1">--kern-metric-<strong>screen-size</strong></td>
+            <td rowspan="1">-kern-screen-size</td>
+            <td></td>
+            <td>360px (1920px)</td>
+        </tr>
+        <tr>
+            <td rowspan="5">--kern-metric-<strong>border-width</strong>-</td>
+            <td rowspan="5">-kern-border-</td>
+            <td>none</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>light</td>
+            <td>1px</td>
+        </tr>
+        <tr>
+            <td>default</td>
+            <td>2px</td>
+        </tr>
+        <tr>
+            <td>bold</td>
+            <td>4px</td>
+        </tr>
+        <tr>
+            <td>heavy</td>
+            <td>8px</td>
+        </tr>
+        <tr>
+            <td rowspan="5">--kern-metric-<strong>border-radius</strong>-</td>
+            <td rowspan="5">rounded-kern-</td>
+            <td>none</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>small</td>
+            <td>2px</td>
+        </tr>
+        <tr>
+            <td>default</td>
+            <td>4px</td>
+        </tr>
+        <tr>
+            <td>large</td>
+            <td>8px</td>
+        </tr>
+        <tr>
+            <td>circle</td>
+            <td>50%</td>
+        </tr>
+        <tr>
+            <td rowspan="20">--kern-darkblue- (!) (lightness, chroma, hue)</td>
+            <td rowspan="20">-kern-darkblue-</td>
+            <td>025</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-025-lightness) var(--kern-darkblue-025-chroma) var(--kern-darkblue-025-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>050</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-050-lightness) var(--kern-darkblue-050-chroma) var(--kern-darkblue-050-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-100-lightness) var(--kern-darkblue-100-chroma) var(--kern-darkblue-100-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-150-lightness) var(--kern-darkblue-150-chroma) var(--kern-darkblue-150-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>200</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-200-lightness) var(--kern-darkblue-200-chroma) var(--kern-darkblue-200-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>250</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-250-lightness) var(--kern-darkblue-250-chroma) var(--kern-darkblue-250-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>300</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-300-lightness) var(--kern-darkblue-300-chroma) var(--kern-darkblue-300-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>350</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-350-lightness) var(--kern-darkblue-350-chroma) var(--kern-darkblue-350-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-400-lightness) var(--kern-darkblue-400-chroma) var(--kern-darkblue-400-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>450</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-450-lightness) var(--kern-darkblue-450-chroma) var(--kern-darkblue-450-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-500-lightness) var(--kern-darkblue-500-chroma) var(--kern-darkblue-500-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>550</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-550-lightness) var(--kern-darkblue-550-chroma) var(--kern-darkblue-550-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>600</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-600-lightness) var(--kern-darkblue-600-chroma) var(--kern-darkblue-600-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>650</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-650-lightness) var(--kern-darkblue-650-chroma) var(--kern-darkblue-650-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>700</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-700-lightness) var(--kern-darkblue-700-chroma) var(--kern-darkblue-700-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>750</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-750-lightness) var(--kern-darkblue-750-chroma) var(--kern-darkblue-750-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>800</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-800-lightness) var(--kern-darkblue-800-chroma) var(--kern-darkblue-800-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>850</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-850-lightness) var(--kern-darkblue-850-chroma) var(--kern-darkblue-850-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>900</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-900-lightness) var(--kern-darkblue-900-chroma) var(--kern-darkblue-900-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>950</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-darkblue-950-lightness) var(--kern-darkblue-950-chroma) var(--kern-darkblue-950-hue))"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="20">--kern-lightblue- (!) (lightness, chroma, hue)</td>
+            <td rowspan="20">-kern-lightblue-</td>
+            <td>025</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-025-lightness) var(--kern-lightblue-025-chroma) var(--kern-lightblue-025-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>050</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-050-lightness) var(--kern-lightblue-050-chroma) var(--kern-lightblue-050-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-100-lightness) var(--kern-lightblue-100-chroma) var(--kern-lightblue-100-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-150-lightness) var(--kern-lightblue-150-chroma) var(--kern-lightblue-150-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>200</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-200-lightness) var(--kern-lightblue-200-chroma) var(--kern-lightblue-200-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>250</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-250-lightness) var(--kern-lightblue-250-chroma) var(--kern-lightblue-250-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>300</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-300-lightness) var(--kern-lightblue-300-chroma) var(--kern-lightblue-300-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>350</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-350-lightness) var(--kern-lightblue-350-chroma) var(--kern-lightblue-350-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-400-lightness) var(--kern-lightblue-400-chroma) var(--kern-lightblue-400-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>450</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-450-lightness) var(--kern-lightblue-450-chroma) var(--kern-lightblue-450-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-500-lightness) var(--kern-lightblue-500-chroma) var(--kern-lightblue-500-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>550</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-550-lightness) var(--kern-lightblue-550-chroma) var(--kern-lightblue-550-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>600</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-600-lightness) var(--kern-lightblue-600-chroma) var(--kern-lightblue-600-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>650</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-650-lightness) var(--kern-lightblue-650-chroma) var(--kern-lightblue-650-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>700</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-700-lightness) var(--kern-lightblue-700-chroma) var(--kern-lightblue-700-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>750</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-750-lightness) var(--kern-lightblue-750-chroma) var(--kern-lightblue-750-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>800</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-800-lightness) var(--kern-lightblue-800-chroma) var(--kern-lightblue-800-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>850</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-850-lightness) var(--kern-lightblue-850-chroma) var(--kern-lightblue-850-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>900</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-900-lightness) var(--kern-lightblue-900-chroma) var(--kern-lightblue-900-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>950</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-lightblue-950-lightness) var(--kern-lightblue-950-chroma) var(--kern-lightblue-950-hue))"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="20">--kern-turquoise- (!) (lightness, chroma, hue)</td>
+            <td rowspan="20">-kern-turquoise-</td>
+            <td>025</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-025-lightness) var(--kern-turquoise-025-chroma) var(--kern-turquoise-025-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>050</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-050-lightness) var(--kern-turquoise-050-chroma) var(--kern-turquoise-050-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-100-lightness) var(--kern-turquoise-100-chroma) var(--kern-turquoise-100-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-150-lightness) var(--kern-turquoise-150-chroma) var(--kern-turquoise-150-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>200</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-200-lightness) var(--kern-turquoise-200-chroma) var(--kern-turquoise-200-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>250</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-250-lightness) var(--kern-turquoise-250-chroma) var(--kern-turquoise-250-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>300</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-300-lightness) var(--kern-turquoise-300-chroma) var(--kern-turquoise-300-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>350</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-350-lightness) var(--kern-turquoise-350-chroma) var(--kern-turquoise-350-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-400-lightness) var(--kern-turquoise-400-chroma) var(--kern-turquoise-400-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>450</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-450-lightness) var(--kern-turquoise-450-chroma) var(--kern-turquoise-450-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-500-lightness) var(--kern-turquoise-500-chroma) var(--kern-turquoise-500-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>550</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-550-lightness) var(--kern-turquoise-550-chroma) var(--kern-turquoise-550-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>600</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-600-lightness) var(--kern-turquoise-600-chroma) var(--kern-turquoise-600-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>650</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-650-lightness) var(--kern-turquoise-650-chroma) var(--kern-turquoise-650-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>700</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-700-lightness) var(--kern-turquoise-700-chroma) var(--kern-turquoise-700-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>750</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-750-lightness) var(--kern-turquoise-750-chroma) var(--kern-turquoise-750-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>800</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-800-lightness) var(--kern-turquoise-800-chroma) var(--kern-turquoise-800-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>850</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-850-lightness) var(--kern-turquoise-850-chroma) var(--kern-turquoise-850-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>900</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-900-lightness) var(--kern-turquoise-900-chroma) var(--kern-turquoise-900-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>950</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-turquoise-950-lightness) var(--kern-turquoise-950-chroma) var(--kern-turquoise-950-hue))"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="20">--kern-green- (!) (lightness, chroma, hue)</td>
+            <td rowspan="20">-kern-green-</td>
+            <td>025</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-025-lightness) var(--kern-green-025-chroma) var(--kern-green-025-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>050</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-050-lightness) var(--kern-green-050-chroma) var(--kern-green-050-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-100-lightness) var(--kern-green-100-chroma) var(--kern-green-100-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-150-lightness) var(--kern-green-150-chroma) var(--kern-green-150-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>200</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-200-lightness) var(--kern-green-200-chroma) var(--kern-green-200-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>250</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-250-lightness) var(--kern-green-250-chroma) var(--kern-green-250-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>300</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-300-lightness) var(--kern-green-300-chroma) var(--kern-green-300-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>350</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-350-lightness) var(--kern-green-350-chroma) var(--kern-green-350-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-400-lightness) var(--kern-green-400-chroma) var(--kern-green-400-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>450</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-450-lightness) var(--kern-green-450-chroma) var(--kern-green-450-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-500-lightness) var(--kern-green-500-chroma) var(--kern-green-500-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>550</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-550-lightness) var(--kern-green-550-chroma) var(--kern-green-550-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>600</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-600-lightness) var(--kern-green-600-chroma) var(--kern-green-600-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>650</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-650-lightness) var(--kern-green-650-chroma) var(--kern-green-650-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>700</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-700-lightness) var(--kern-green-700-chroma) var(--kern-green-700-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>750</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-750-lightness) var(--kern-green-750-chroma) var(--kern-green-750-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>800</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-800-lightness) var(--kern-green-800-chroma) var(--kern-green-800-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>850</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-850-lightness) var(--kern-green-850-chroma) var(--kern-green-850-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>900</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-900-lightness) var(--kern-green-900-chroma) var(--kern-green-900-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>950</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-green-950-lightness) var(--kern-green-950-chroma) var(--kern-green-950-hue))"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="20">--kern-limette- (!) (lightness, chroma, hue)</td>
+            <td rowspan="20">-kern-limette-</td>
+            <td>025</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-025-lightness) var(--kern-limette-025-chroma) var(--kern-limette-025-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>050</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-050-lightness) var(--kern-limette-050-chroma) var(--kern-limette-050-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-100-lightness) var(--kern-limette-100-chroma) var(--kern-limette-100-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-150-lightness) var(--kern-limette-150-chroma) var(--kern-limette-150-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>200</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-200-lightness) var(--kern-limette-200-chroma) var(--kern-limette-200-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>250</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-250-lightness) var(--kern-limette-250-chroma) var(--kern-limette-250-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>300</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-300-lightness) var(--kern-limette-300-chroma) var(--kern-limette-300-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>350</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-350-lightness) var(--kern-limette-350-chroma) var(--kern-limette-350-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-400-lightness) var(--kern-limette-400-chroma) var(--kern-limette-400-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>450</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-450-lightness) var(--kern-limette-450-chroma) var(--kern-limette-450-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-500-lightness) var(--kern-limette-500-chroma) var(--kern-limette-500-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>550</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-550-lightness) var(--kern-limette-550-chroma) var(--kern-limette-550-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>600</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-600-lightness) var(--kern-limette-600-chroma) var(--kern-limette-600-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>650</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-650-lightness) var(--kern-limette-650-chroma) var(--kern-limette-650-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>700</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-700-lightness) var(--kern-limette-700-chroma) var(--kern-limette-700-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>750</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-750-lightness) var(--kern-limette-750-chroma) var(--kern-limette-750-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>800</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-800-lightness) var(--kern-limette-800-chroma) var(--kern-limette-800-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>850</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-850-lightness) var(--kern-limette-850-chroma) var(--kern-limette-850-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>900</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-900-lightness) var(--kern-limette-900-chroma) var(--kern-limette-900-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>950</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-limette-950-lightness) var(--kern-limette-950-chroma) var(--kern-limette-950-hue))"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="20">--kern-yellow- (!) (lightness, chroma, hue)</td>
+            <td rowspan="20">-kern-yellow-</td>
+            <td>025</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-025-lightness) var(--kern-yellow-025-chroma) var(--kern-yellow-025-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>050</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-050-lightness) var(--kern-yellow-050-chroma) var(--kern-yellow-050-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-100-lightness) var(--kern-yellow-100-chroma) var(--kern-yellow-100-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-150-lightness) var(--kern-yellow-150-chroma) var(--kern-yellow-150-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>200</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-200-lightness) var(--kern-yellow-200-chroma) var(--kern-yellow-200-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>250</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-250-lightness) var(--kern-yellow-250-chroma) var(--kern-yellow-250-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>300</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-300-lightness) var(--kern-yellow-300-chroma) var(--kern-yellow-300-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>350</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-350-lightness) var(--kern-yellow-350-chroma) var(--kern-yellow-350-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-400-lightness) var(--kern-yellow-400-chroma) var(--kern-yellow-400-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>450</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-450-lightness) var(--kern-yellow-450-chroma) var(--kern-yellow-450-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-500-lightness) var(--kern-yellow-500-chroma) var(--kern-yellow-500-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>550</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-550-lightness) var(--kern-yellow-550-chroma) var(--kern-yellow-550-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>600</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-600-lightness) var(--kern-yellow-600-chroma) var(--kern-yellow-600-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>650</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-650-lightness) var(--kern-yellow-650-chroma) var(--kern-yellow-650-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>700</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-700-lightness) var(--kern-yellow-700-chroma) var(--kern-yellow-700-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>750</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-750-lightness) var(--kern-yellow-750-chroma) var(--kern-yellow-750-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>800</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-800-lightness) var(--kern-yellow-800-chroma) var(--kern-yellow-800-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>850</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-850-lightness) var(--kern-yellow-850-chroma) var(--kern-yellow-850-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>900</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-900-lightness) var(--kern-yellow-900-chroma) var(--kern-yellow-900-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>950</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-yellow-950-lightness) var(--kern-yellow-950-chroma) var(--kern-yellow-950-hue))"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="20">--kern-orange- (!) (lightness, chroma, hue)</td>
+            <td rowspan="20">-kern-orange-</td>
+            <td>025</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-025-lightness) var(--kern-orange-025-chroma) var(--kern-orange-025-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>050</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-050-lightness) var(--kern-orange-050-chroma) var(--kern-orange-050-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-100-lightness) var(--kern-orange-100-chroma) var(--kern-orange-100-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-150-lightness) var(--kern-orange-150-chroma) var(--kern-orange-150-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>200</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-200-lightness) var(--kern-orange-200-chroma) var(--kern-orange-200-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>250</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-250-lightness) var(--kern-orange-250-chroma) var(--kern-orange-250-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>300</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-300-lightness) var(--kern-orange-300-chroma) var(--kern-orange-300-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>350</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-350-lightness) var(--kern-orange-350-chroma) var(--kern-orange-350-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-400-lightness) var(--kern-orange-400-chroma) var(--kern-orange-400-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>450</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-450-lightness) var(--kern-orange-450-chroma) var(--kern-orange-450-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-500-lightness) var(--kern-orange-500-chroma) var(--kern-orange-500-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>550</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-550-lightness) var(--kern-orange-550-chroma) var(--kern-orange-550-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>600</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-600-lightness) var(--kern-orange-600-chroma) var(--kern-orange-600-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>650</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-650-lightness) var(--kern-orange-650-chroma) var(--kern-orange-650-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>700</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-700-lightness) var(--kern-orange-700-chroma) var(--kern-orange-700-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>750</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-750-lightness) var(--kern-orange-750-chroma) var(--kern-orange-750-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>800</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-800-lightness) var(--kern-orange-800-chroma) var(--kern-orange-800-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>850</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-850-lightness) var(--kern-orange-850-chroma) var(--kern-orange-850-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>900</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-900-lightness) var(--kern-orange-900-chroma) var(--kern-orange-900-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>950</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-orange-950-lightness) var(--kern-orange-950-chroma) var(--kern-orange-950-hue))"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="20">--kern-red- (!) (lightness, chroma, hue)</td>
+            <td rowspan="20">-kern-red-</td>
+            <td>025</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-025-lightness) var(--kern-red-025-chroma) var(--kern-red-025-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>050</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-050-lightness) var(--kern-red-050-chroma) var(--kern-red-050-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-100-lightness) var(--kern-red-100-chroma) var(--kern-red-100-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-150-lightness) var(--kern-red-150-chroma) var(--kern-red-150-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>200</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-200-lightness) var(--kern-red-200-chroma) var(--kern-red-200-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>250</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-250-lightness) var(--kern-red-250-chroma) var(--kern-red-250-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>300</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-300-lightness) var(--kern-red-300-chroma) var(--kern-red-300-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>350</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-350-lightness) var(--kern-red-350-chroma) var(--kern-red-350-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-400-lightness) var(--kern-red-400-chroma) var(--kern-red-400-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>450</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-450-lightness) var(--kern-red-450-chroma) var(--kern-red-450-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-500-lightness) var(--kern-red-500-chroma) var(--kern-red-500-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>550</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-550-lightness) var(--kern-red-550-chroma) var(--kern-red-550-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>600</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-600-lightness) var(--kern-red-600-chroma) var(--kern-red-600-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>650</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-650-lightness) var(--kern-red-650-chroma) var(--kern-red-650-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>700</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-700-lightness) var(--kern-red-700-chroma) var(--kern-red-700-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>750</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-750-lightness) var(--kern-red-750-chroma) var(--kern-red-750-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>800</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-800-lightness) var(--kern-red-800-chroma) var(--kern-red-800-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>850</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-850-lightness) var(--kern-red-850-chroma) var(--kern-red-850-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>900</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-900-lightness) var(--kern-red-900-chroma) var(--kern-red-900-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>950</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-red-950-lightness) var(--kern-red-950-chroma) var(--kern-red-950-hue))"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="20">--kern-violet- (!) (lightness, chroma, hue)</td>
+            <td rowspan="20">-kern-violet-</td>
+            <td>025</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-025-lightness) var(--kern-violet-025-chroma) var(--kern-violet-025-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>050</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-050-lightness) var(--kern-violet-050-chroma) var(--kern-violet-050-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-100-lightness) var(--kern-violet-100-chroma) var(--kern-violet-100-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-150-lightness) var(--kern-violet-150-chroma) var(--kern-violet-150-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>200</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-200-lightness) var(--kern-violet-200-chroma) var(--kern-violet-200-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>250</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-250-lightness) var(--kern-violet-250-chroma) var(--kern-violet-250-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>300</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-300-lightness) var(--kern-violet-300-chroma) var(--kern-violet-300-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>350</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-350-lightness) var(--kern-violet-350-chroma) var(--kern-violet-350-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-400-lightness) var(--kern-violet-400-chroma) var(--kern-violet-400-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>450</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-450-lightness) var(--kern-violet-450-chroma) var(--kern-violet-450-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-500-lightness) var(--kern-violet-500-chroma) var(--kern-violet-500-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>550</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-550-lightness) var(--kern-violet-550-chroma) var(--kern-violet-550-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>600</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-600-lightness) var(--kern-violet-600-chroma) var(--kern-violet-600-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>650</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-650-lightness) var(--kern-violet-650-chroma) var(--kern-violet-650-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>700</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-700-lightness) var(--kern-violet-700-chroma) var(--kern-violet-700-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>750</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-750-lightness) var(--kern-violet-750-chroma) var(--kern-violet-750-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>800</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-800-lightness) var(--kern-violet-800-chroma) var(--kern-violet-800-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>850</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-850-lightness) var(--kern-violet-850-chroma) var(--kern-violet-850-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>900</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-900-lightness) var(--kern-violet-900-chroma) var(--kern-violet-900-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>950</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-violet-950-lightness) var(--kern-violet-950-chroma) var(--kern-violet-950-hue))"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="22">--kern-neutral- (!) (lightness, chroma, hue)</td>
+            <td rowspan="22">-kern-neutral-</td>
+            <td>000</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-000-lightness) var(--kern-neutral-000-chroma) var(--kern-neutral-000-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>025</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-025-lightness) var(--kern-neutral-025-chroma) var(--kern-neutral-025-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>050</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-050-lightness) var(--kern-neutral-050-chroma) var(--kern-neutral-050-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-100-lightness) var(--kern-neutral-100-chroma) var(--kern-neutral-100-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-150-lightness) var(--kern-neutral-150-chroma) var(--kern-neutral-150-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>200</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-200-lightness) var(--kern-neutral-200-chroma) var(--kern-neutral-200-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>250</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-250-lightness) var(--kern-neutral-250-chroma) var(--kern-neutral-250-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>300</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-300-lightness) var(--kern-neutral-300-chroma) var(--kern-neutral-300-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>350</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-350-lightness) var(--kern-neutral-350-chroma) var(--kern-neutral-350-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-400-lightness) var(--kern-neutral-400-chroma) var(--kern-neutral-400-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>450</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-450-lightness) var(--kern-neutral-450-chroma) var(--kern-neutral-450-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-500-lightness) var(--kern-neutral-500-chroma) var(--kern-neutral-500-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>550</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-550-lightness) var(--kern-neutral-550-chroma) var(--kern-neutral-550-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>600</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-600-lightness) var(--kern-neutral-600-chroma) var(--kern-neutral-600-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>650</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-650-lightness) var(--kern-neutral-650-chroma) var(--kern-neutral-650-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>700</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-700-lightness) var(--kern-neutral-700-chroma) var(--kern-neutral-700-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>750</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-750-lightness) var(--kern-neutral-750-chroma) var(--kern-neutral-750-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>800</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-800-lightness) var(--kern-neutral-800-chroma) var(--kern-neutral-800-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>850</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-850-lightness) var(--kern-neutral-850-chroma) var(--kern-neutral-850-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>900</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-900-lightness) var(--kern-neutral-900-chroma) var(--kern-neutral-900-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>950</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-950-lightness) var(--kern-neutral-950-chroma) var(--kern-neutral-950-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>1000</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-neutral-1000-lightness) var(--kern-neutral-1000-chroma) var(--kern-neutral-1000-hue))"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="20">--kern-dataport-red- (!) (lightness, chroma, hue)</td>
+            <td rowspan="20">-kern-dataport-red-</td>
+            <td>025</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-025-lightness) var(--kern-dataport-red-025-chroma) var(--kern-dataport-red-025-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>050</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-050-lightness) var(--kern-dataport-red-050-chroma) var(--kern-dataport-red-050-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-100-lightness) var(--kern-dataport-red-100-chroma) var(--kern-dataport-red-100-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-150-lightness) var(--kern-dataport-red-150-chroma) var(--kern-dataport-red-150-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>200</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-200-lightness) var(--kern-dataport-red-200-chroma) var(--kern-dataport-red-200-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>250</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-250-lightness) var(--kern-dataport-red-250-chroma) var(--kern-dataport-red-250-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>300</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-300-lightness) var(--kern-dataport-red-300-chroma) var(--kern-dataport-red-300-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>350</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-350-lightness) var(--kern-dataport-red-350-chroma) var(--kern-dataport-red-350-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-400-lightness) var(--kern-dataport-red-400-chroma) var(--kern-dataport-red-400-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>450</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-450-lightness) var(--kern-dataport-red-450-chroma) var(--kern-dataport-red-450-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-500-lightness) var(--kern-dataport-red-500-chroma) var(--kern-dataport-red-500-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>550</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-550-lightness) var(--kern-dataport-red-550-chroma) var(--kern-dataport-red-550-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>600</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-600-lightness) var(--kern-dataport-red-600-chroma) var(--kern-dataport-red-600-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>650</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-650-lightness) var(--kern-dataport-red-650-chroma) var(--kern-dataport-red-650-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>700</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-700-lightness) var(--kern-dataport-red-700-chroma) var(--kern-dataport-red-700-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>750</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-750-lightness) var(--kern-dataport-red-750-chroma) var(--kern-dataport-red-750-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>800</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-800-lightness) var(--kern-dataport-red-800-chroma) var(--kern-dataport-red-800-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>850</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-850-lightness) var(--kern-dataport-red-850-chroma) var(--kern-dataport-red-850-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>900</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-900-lightness) var(--kern-dataport-red-900-chroma) var(--kern-dataport-red-900-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>950</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-dataport-red-950-lightness) var(--kern-dataport-red-950-chroma) var(--kern-dataport-red-950-hue))"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="1">--kern-gray- (!) (lightness, chroma, hue)</td>
+            <td rowspan="1">-kern-gray-</td>
+            <td>025</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-gray-025-lightness) var(--kern-gray-025-chroma) var(--kern-gray-025-hue))"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="19">--kern-grey- (!) (lightness, chroma, hue)</td>
+            <td rowspan="19">-kern-grey-</td>
+            <td>050</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-050-lightness) var(--kern-grey-050-chroma) var(--kern-grey-050-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-100-lightness) var(--kern-grey-100-chroma) var(--kern-grey-100-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-150-lightness) var(--kern-grey-150-chroma) var(--kern-grey-150-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>200</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-200-lightness) var(--kern-grey-200-chroma) var(--kern-grey-200-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>250</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-250-lightness) var(--kern-grey-250-chroma) var(--kern-grey-250-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>300</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-300-lightness) var(--kern-grey-300-chroma) var(--kern-grey-300-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>350</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-350-lightness) var(--kern-grey-350-chroma) var(--kern-grey-350-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>400</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-400-lightness) var(--kern-grey-400-chroma) var(--kern-grey-400-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>450</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-450-lightness) var(--kern-grey-450-chroma) var(--kern-grey-450-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>500</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-500-lightness) var(--kern-grey-500-chroma) var(--kern-grey-500-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>550</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-550-lightness) var(--kern-grey-550-chroma) var(--kern-grey-550-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>600</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-600-lightness) var(--kern-grey-600-chroma) var(--kern-grey-600-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>650</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-650-lightness) var(--kern-grey-650-chroma) var(--kern-grey-650-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>700</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-700-lightness) var(--kern-grey-700-chroma) var(--kern-grey-700-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>750</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-750-lightness) var(--kern-grey-750-chroma) var(--kern-grey-750-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>800</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-800-lightness) var(--kern-grey-800-chroma) var(--kern-grey-800-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>850</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-850-lightness) var(--kern-grey-850-chroma) var(--kern-grey-850-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>900</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-900-lightness) var(--kern-grey-900-chroma) var(--kern-grey-900-hue))"></div></td>
+        </tr>
+        <tr>
+            <td>950</td>
+            <td><div class="kern-tokens-color" style="background-color: oklch(var(--kern-grey-950-lightness) var(--kern-grey-950-chroma) var(--kern-grey-950-hue))"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="6">--kern-color-<strong>action</strong>-</td>
+            <td rowspan="6">-kern-action-</td>
+            <td>default</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-action-default)"></div></td>
+        </tr>
+        <tr>
+            <td>on-default</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-action-on-default)"></div></td>
+        </tr>
+        <tr>
+            <td>visited</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-action-visited)"></div></td>
+        </tr>
+        <tr>
+            <td>focus-background</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-action-focus-background)"></div></td>
+        </tr>
+        <tr>
+            <td>focus-border-inside</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-action-focus-border-inside)"></div></td>
+        </tr>
+        <tr>
+            <td>focus-border-outside</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-action-focus-border-outside)"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="7">--kern-color-action-<strong>state-indicator</strong>-</td>
+            <td rowspan="7">-kern-action-state-indicator-</td>
+            <td>default</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-action-state-indicator-default)"></div></td>
+        </tr>
+        <tr>
+            <td>shade</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-action-state-indicator-shade)"></div></td>
+        </tr>
+        <tr>
+            <td>shade-hover</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-action-state-indicator-shade-hover)"></div></td>
+        </tr>
+        <tr>
+            <td>shade-active</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-action-state-indicator-shade-active)"></div></td>
+        </tr>
+        <tr>
+            <td>tint</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-action-state-indicator-tint)"></div></td>
+        </tr>
+        <tr>
+            <td>tint-hover</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-action-state-indicator-tint-hover)"></div></td>
+        </tr>
+        <tr>
+            <td>tint-active</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-action-state-indicator-tint-active)"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="10">--kern-color-<strong>feedback</strong>-</td>
+            <td rowspan="10">-kern-feedback-</td>
+            <td>danger</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-feedback-danger)"></div></td>
+        </tr>
+        <tr>
+            <td>danger-background</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-feedback-danger-background)"></div></td>
+        </tr>
+        <tr>
+            <td>info</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-feedback-info)"></div></td>
+        </tr>
+        <tr>
+            <td>info-background</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-feedback-info-background)"></div></td>
+        </tr>
+        <tr>
+            <td>success</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-feedback-success)"></div></td>
+        </tr>
+        <tr>
+            <td>success-background</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-feedback-success-background)"></div></td>
+        </tr>
+        <tr>
+            <td>warning</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-feedback-warning)"></div></td>
+        </tr>
+        <tr>
+            <td>warning-background</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-feedback-warning-background)"></div></td>
+        </tr>
+        <tr>
+            <td>loader</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-feedback-loader)"></div></td>
+        </tr>
+        <tr>
+            <td>loader-background</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-feedback-loader-background)"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="3">--kern-color-<strong>form-input</strong>-</td>
+            <td rowspan="3">-kern-form-input-</td>
+            <td>background</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-form-input-background)"></div></td>
+        </tr>
+        <tr>
+            <td>background-inverted</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-form-input-background-inverted)"></div></td>
+        </tr>
+        <tr>
+            <td>border</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-form-input-border)"></div></td>
+        </tr>
+        <tr>
+            <td rowspan="8">--kern-color-<strong>layout</strong>-</td>
+            <td rowspan="8">-kern-layout-</td>
+            <td>border</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-layout-border)"></div></td>
+        </tr>
+        <tr>
+            <td>text-default</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-layout-text-default)"></div></td>
+        </tr>
+        <tr>
+            <td>text-inverse</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-layout-text-inverse)"></div></td>
+        </tr>
+        <tr>
+            <td>text-muted</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-layout-text-muted)"></div></td>
+        </tr>
+        <tr>
+            <td>background-default</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-layout-background-default)"></div></td>
+        </tr>
+        <tr>
+            <td>background-hued</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-layout-background-hued)"></div></td>
+        </tr>
+        <tr>
+            <td>background-overlay</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-layout-background-overlay)"></div></td>
+        </tr>
+        <tr>
+            <td>background-inverted</td>
+            <td><div class="kern-tokens-color" style="background-color: var(--kern-color-layout-background-inverted)"></div></td>
+        </tr>
+    </tbody>
+</table>

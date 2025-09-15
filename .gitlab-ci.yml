@@ -1,4 +1,0 @@
-publish-pages:
-  script:
-    - echo Hallo
-  pages: true

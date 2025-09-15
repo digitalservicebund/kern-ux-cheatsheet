@@ -1,6 +1,14 @@
- <link rel="stylesheet" href="https://unpkg.com/@kern-ux/native/dist/kern.min.css" />
+ <link rel="stylesheet" href="https://unpkg.com/@kern-ux/native/dist/kern.css" />
+ <link rel="stylesheet" href="https://unpkg.com/@kern-ux/native/dist/fonts/fira-sans.css" />
 <style>
   body { max-width: none; }
+</style>
+
+<style>
+    .docs td { vertical-align: top; font-family: monospace; }
+    .docs tr:has([rowspan]):not(:first-child) { border-top: 1rem solid transparent; }
+    .kern-tokens-color { width: 1.5rem; height: 1.5rem; }
+    .docs td strong { font-family: inherit; }
 </style>
 
 # KERN UX Cheatsheet
@@ -90,58 +98,104 @@ Design Tokens am Ende der Datei
 
 ## Typografisches
 
-### Headings
+<table class="docs">
+    <thead>
+        <tr>
+            <th>Klasse</th>
+            <th>Beispiel</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>kern-<strong>heading</strong>-display</td>
+            <td><span class="kern-heading-display">Lorem ipsum</span></td>
+        </tr>
+            <td>kern-heading-x-large</td>
+            <td><span class="kern-heading-x-large">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-heading-large</td>
+            <td><span class="kern-heading-large">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-heading-medium</td>
+            <td><span class="kern-heading-medium">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-heading-small</td>
+            <td><span class="kern-heading-small">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-<strong>title</strong></td>
+            <td><span class="kern-title">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-title kern-title--large</td>
+            <td><span class="kern-title kern-title--large">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-title kern-title--small</td>
+            <td><span class="kern-title kern-title--small">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-<strong>preline</strong></td>
+            <td><span class="kern-preline">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-preline kern-preline--large</td>
+            <td><span class="kern-preline kern-preline--large">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-preline kern-preline--small</td>
+            <td><span class="kern-preline kern-preline--small">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-<strong>subline</strong></td>
+            <td><span class="kern-subline">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-subline kern-subline--large</td>
+            <td><span class="kern-subline kern-subline--large">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-subline kern-subline--small</td>
+            <td><span class="kern-subline kern-subline--small">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-<strong>label</strong></td>
+            <td><span class="kern-label">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-label kern-label--large</td>
+            <td><span class="kern-label kern-label--large">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-label kern-label--small</td>
+            <td><span class="kern-label kern-label--small">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-<strong>body</strong></td>
+            <td><span class="kern-body">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-body kern-body--large</td>
+            <td><span class="kern-body kern-body--large">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-body kern-body--small</td>
+            <td><span class="kern-body kern-body--small">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-body kern-body--bold</td>
+            <td><span class="kern-body kern-body--bold">Lorem ipsum</span></td>
+        </tr>
+        <tr>
+            <td>kern-body kern-body--muted</td>
+            <td><span class="kern-body kern-body--muted">Lorem ipsum</span></td>
+        </tr>
+    </tbody>
+</table>
 
-Mit `h1`-`h6` kombinieren.
-
-- `kern-heading-display`
-- `kern-heading-x-large`
-- `kern-heading-large`
-- `kern-heading-medium`
-- `kern-heading-small` 
-
-### Titles
-
-Mit `h1`-`h6` oder anderem Element, z.B. `p` kombinieren.
-
-- `kern-title kern-title--large`
-- `kern-title`
-- `kern-title kern-title--small`
-
-### Prelines
-
-- `kern-preline kern-preline--large`
-- `kern-preline`
-- `kern-preline kern-preline--small`
-
-### Sublines
-
-- `kern-subline kern-subline--large`
-- `kern-subline`
-- `kern-subline kern-subline--small`
-
-### Labels
-
-i.d.R. mit `label` oder `legend` kombinieren.
-
-- `kern-label kern-label--large`
-- `kern-label`
-- `kern-label kern-label--small`
-
-### Body text
-
-note: font-size und font-weight können kombiniert werden, z.B. `kern-body kern-body--large kern-body--bold`.
-
-#### font-size
-
-- `kern-body kern-body--large`
-- `kern-body`
-- `kern-body kern-body--small`
-
-#### font-weight
-
-- `kern-body kern-body--bold`
-- `kern-body kern-body--muted`
 
 ---
 
@@ -154,10 +208,32 @@ note: font-size und font-weight können kombiniert werden, z.B. `kern-body kern-
 
 ### Größe
 
-- `kern-icon kern-icon--x-large`
-- `kern-icon kern-icon--large`
-- `kern-icon`
-- `kern-icon kern-icon--small`
+<table class="docs">
+    <thead>
+        <tr>
+            <th>Klasse(n)</th>
+            <th>Beispiel</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>kern-icon</td>
+            <td><span class="kern-icon kern-icon--home" aria-hidden></span></td>
+        </tr>
+        <tr>
+            <td>kern-icon kern-icon--x-large</td>
+            <td><span class="kern-icon kern-icon--x-large kern-icon--home" aria-hidden></span></td>
+        </tr>
+        <tr>
+            <td>kern-icon kern-icon--large</td>
+            <td><span class="kern-icon kern-icon--large kern-icon--home" aria-hidden></span></td>
+        </tr>
+        <tr>
+            <td>kern-icon kern-icon--small</td>
+            <td><span class="kern-icon kern-icon--small kern-icon--home" aria-hidden></span></td>
+        </tr
+    </tbody>
+</table>
 
 ### Motiv
 
@@ -197,6 +273,7 @@ note: font-size und font-weight können kombiniert werden, z.B. `kern-body kern-
 - `kern-icon--keyboard-double-arrow-left`
 - `kern-icon--keyboard-double-arrow-right`
 
+
 [weitere Material UI Icons](https://gitlab.opencode.de/joschka/material-ui-icons-for-kern-ux/-/raw/main/list.css?ref_type=heads)
 
 ---
@@ -206,6 +283,16 @@ note: font-size und font-weight können kombiniert werden, z.B. `kern-body kern-
 - wrapper div: `kern-form-check`
 - checkbox: `kern-form-check__checkbox`
 - radio: `kern-form-check__radio`
+
+<div class="kern-form-check">
+    <input id="c1" type="checkbox" class="kern-form-check__checkbox">
+    <label for="c1" class="kern-label">Checkbox</label>
+</div>
+
+<div class="kern-form-check">
+    <input id="r1" type="radio" class="kern-form-check__radio">
+    <label for="r1" class="kern-label">Radio</label>
+</div>
 
 ---
 
@@ -617,14 +704,7 @@ Beispiel:
 - als CSS Variable: `border-radius: var(--kern-metric-border-radius-default);`
 - mit Tailwind: `<div class="rounded-kern-default">`
 
-<style>
-    .kern-tokens td { vertical-align: top; font-family: monospace; }
-    .kern-tokens tr:has([rowspan]):not(:first-child) { border-top: 1rem solid transparent; }
-    .kern-tokens-color { width: 1.5rem; height: 1.5rem; }
-    .kern-tokens strong { font-family: inherit; }
-</style>
-
-<table class="kern-tokens">
+<table class="docs">
     <thead>
         <tr>
           <th>CSS</th>

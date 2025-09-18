@@ -110,4 +110,4 @@ tocbot.init({
 </script>
   </body></html>`;
 
-fs.writeFileSync("./docs/index.html", start + html + end);
+fs.writeFileSync("dist/index.html", start + html + end);

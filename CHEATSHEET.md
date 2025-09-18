@@ -9,6 +9,11 @@
     .docs tr:has([rowspan]):not(:first-child) { border-top: 1rem solid transparent; }
     .kern-tokens-color { width: 1.5rem; height: 1.5rem; }
     .docs td strong { font-family: inherit; }
+    @media (prefers-color-scheme: dark) {
+      table.docs {
+        color: white;
+      }
+    }
 </style>
 
 # KERN UX Cheatsheet

@@ -1,1 +1,0 @@
-pandoc --toc --toc-depth=2 --standalone --from=gfm -o docs/index.html CHEATSHEET.md
